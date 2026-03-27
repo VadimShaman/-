@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsenal Demirjian | Custom Tactical & Survival Gear</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a2a1f 0%, #0f1a0e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Military-style header */
+        .header {
+            background: #0a0f0a;
+            border-bottom: 3px solid #5a7a4a;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #b87c4a, #d4a373);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo p {
+            font-size: 0.8rem;
+            color: #8a9a7a;
+            font-family: monospace;
+        }
+
+        .tagline {
+            text-align: right;
+            border-left: 2px solid #5a7a4a;
+            padding-left: 20px;
+        }
+
+        .tagline span {
+            color: #b87c4a;
+            font-weight: bold;
+        }
+
+        .nav {
+            background: #1e2a1a;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #3a4a2a;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav a {
+            color: #d4c9b0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav a:hover {
+            color: #e6b17e;
+        }
+
+        /* Main content */
+        .main {
+            padding: 30px 0;
+        }
+
+        /* Hero banner parody */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400"><rect width="800" height="400" fill="%233a4a2a"/><circle cx="400" cy="200" r="80" fill="%235a7a4a" opacity="0.3"/><path d="M300 250 L500 250 L450 320 L350 320 Z" fill="%237a5a3a" opacity="0.5"/></svg>');
+            background-size: cover;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #5a7a4a;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #e6b17e;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #2a3a1a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+            font-family: monospace;
+        }
+
+        /* Category sections */
+        .category {
+            background: #1a2418;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid #3a4a2a;
+        }
+
+        .category-header {
+            background: #2a3a22;
+            padding: 12px 20px;
+            border-bottom: 1px solid #5a7a4a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-header h3 {
+            font-size: 1.3rem;
+            color: #e6b17e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-header span {
+            font-size: 0.8rem;
+            color: #8a9a7a;
+        }
+
+        .category-content {
+            padding: 20px;
+            display: block;
+        }
+
+        /* Table styling */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .price-table th {
+            text-align: left;
+            padding: 12px 8px;
+            background: #2a3222;
+            color: #d4c9b0;
+            font-weight: 600;
+            border-bottom: 1px solid #5a7a4a;
+        }
+
+        .price-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #2a3222;
+            vertical-align: top;
+        }
+
+        .price-table tr:hover {
+            background: #2a3228;
+        }
+
+        .price {
+            color: #e6b17e;
+            font-weight: bold;
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        .note {
+            font-size: 0.75rem;
+            color: #8a9a7a;
+            font-style: italic;
+        }
+
+        /* Custom order section */
+        .custom-order {
+            background: #1e2a1a;
+            border: 2px dashed #b87c4a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .custom-order h3 {
+            color: #e6b17e;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0f0a;
+            padding: 30px 0;
+            margin-top: 30px;
+            border-top: 1px solid #3a4a2a;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6a7a5a;
+        }
+
+        .disclaimer {
+            background: #2a1a1a;
+            border-left: 4px solid #b87c4a;
+            padding: 12px;
+            margin: 20px 0;
+            font-size: 0.8rem;
+            color: #ccaa88;
+        }
+
+        @media (max-width: 768px) {
+
+            .price-table,
+            .price-table tbody,
+            .price-table tr,
+            .price-table td {
+                display: block;
+            }
+
+            .price-table th {
+                display: none;
+            }
+
+            .price-table td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: none;
+                border-bottom: 1px solid #2a3222;
+            }
+
+            .price-table td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #d4c9b0;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tagline {
+                border-left: none;
+                padding-left: 0;
+                text-align: center;
+            }
+        }
+
+        button {
+            background: none;
+            border: none;
+            color: #e6b17e;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .collapsed .category-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>ARSENAL DEMIRJIAN</h1>
+                    <p>Custom Tactical & Survival Equipment | Est. 2010</p>
+                </div>
+                <div class="tagline">
+                    <span>⚙️ Military Engineering | Southgate Campus</span><br>
+                    Louisiana
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#">🏠 MAIN</a></li>
+                <li><a href="#">🔫 FIREARMS</a></li>
+                <li><a href="#">🗡️ BLADES</a></li>
+                <li><a href="#">🎯 NETS & GEAR</a></li>
+                <li><a href="#">💊 SURVIVAL</a></li>
+                <li><a href="#">🔧 CUSTOM SHOP</a></li>
+                <li><a href="#">📦 AMMO</a></li>
+                <li><a href="#">📞 CONTACT</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main container">
+        <div class="hero">
+            <h2>⚔️ STUDENT-MADE • MILITARY-GRADE • BAYOU-READY ⚔️</h2>
+            <p>Arsen Demirjian — инженер-оружейник из Саутгейта. Ручная сборка, кастомизация, редкие европейские образцы
+                и легендарные американские модели. <br>🔥 <strong>Сеткомёты полицейскае теперь в
+                    наличии!</strong> 🔥</p>
+            <div class="badge">📍 Southgate Campus — личная встреча или доставка по Луизиане</div>
+        </div>
+
+        <!-- ========== 1. FIREARMS ========== -->
+        <div class="category" id="firearms">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h3>🔫 ОГНЕСТРЕЛЬНОЕ ОРУЖИЕ <span>— American & European models</span></h3>
+                <button>▼</button>
+            </div>
+            <div class="category-content">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Модель / Тип</th>
+                            <th>Описание</th>
+                            <th>Цена ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Модель">Mossberg 590A1</td>
+                            <td data-label="Описание">Помповое ружье USMC, 17" ствол, для борьбы с дронами и мобильных
+                                групп</td>
+                            <td class="price" data-label="Цена">800 – 1000</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Модель">LMT MARS-H (MRGG-A)</td>
+                            <td data-label="Описание">6.5 Creedmoor, газоотвод DI, принята SOCOM</td>
+                            <td class="price" data-label="Цена">2500 – 3500</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Модель">Remington 750</td>
+                            <td data-label="Описание">Классический американский полуавтомат .30-06 / .308</td>
+                            <td class="price" data-label="Цена">1100 – 1400</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Модель">Haenel SLB 2000+</td>
+                            <td data-label="Описание">Немецкий полуавтомат, самоочистка газового узла</td>
+                            <td class="price" data-label="Цена">1300 – 1600</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Модель">Smith & Wesson 1854</td>
+                            <td data-label="Описание">Рычажный карабин .44 Mag / .357 / 45-70 Govt</td>
+                            <td class="price" data-label="Цена">1400 – 3800</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Модель">AK / Zastava M70</td>
+                            <td data-label="Описание">Сербский калаш, б/у в хорошем состоянии</td>
+                            <td class="price" data-label="Цена">600 – 800</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Модель">Mosin-Nagant M91/30</td>
+                            <td data-label="Описание">Винтовка 1940-х, мощный винтаж</td>
+                            <td class="price" data-label="Цена">120 – 250</td>
+                        </tr>
+                        <tr>
+                            <td class="note" colspan="3">🔞 Требуется возраст 21+ для пистолетных калибров. Продажа
+                                только при личной встрече с проверкой документов.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ========== 2. BLADES & MELEE ========== -->
+        <div class="category" id="blades">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h3>🗡️ ХОЛОДНОЕ ОРУЖИЕ <span>— Handmade & exotic</span></h3>
+                <button>▼</button>
+            </div>
+            <div class="category-content">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Изделие</th>
+                            <th>Описание / Материал</th>
+                            <th>Цена ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Изделие">Армянский кинжал "Кинжа"</td>
+                            <td data-label="Описание">Дамасская сталь, ручная ковка, ушная рукоять</td>
+                            <td class="price" data-label="Цена">400 – 800</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Изделие">Нож "GatorSkin"</td>
+                            <td data-label="Описание">Самодельный из рессоры, толстый обух, для тяжелых работ</td>
+                            <td class="price" data-label="Цена">80 – 150</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Изделие">Штык-нож M9</td>
+                            <td data-label="Описание">Армейский, Phrobis/Buck, клеймо US</td>
+                            <td class="price" data-label="Цена">150 – 250</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Изделие">Нож-бабочка Balisong</td>
+                            <td data-label="Описание">Benchmade / Bradley, качественная сталь</td>
+                            <td class="price" data-label="Цена">100 – 400</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Изделие">Кастет-нож Apache</td>
+                            <td data-label="Описание">Французский раритет начала XX в.</td>
+                            <td class="price" data-label="Цена">300 – 600</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Изделие">Метательные ножи (3 шт.)</td>
+                            <td data-label="Описание">Сбалансированные, в кобуре</td>
+                            <td class="price" data-label="Цена">50 – 120</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ========== 3. GATOR NET LAUNCHER ========== -->
+        <div class="category" id="netgun">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h3>🎯 ОХОТНИЧИЙ СЕТКОМЁТ <span>— Arsen’s custom design</span></h3>
+                <button>▼</button>
+            </div>
+            <div class="category-content">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Товар</th>
+                            <th>Описание</th>
+                            <th>Цена ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Товар">GatorSling MK1</td>
+                            <td data-label="Описание">Пневматический сеткомёт, авиаалюминий, дальность 8-12 м + 1
+                                насадка</td>
+                            <td class="price" data-label="Цена">450 – 650</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Товар">Заряды стандартные (3 шт.)</td>
+                            <td data-label="Описание">Синтетическая сеть, одноразовые картриджи</td>
+                            <td class="price" data-label="Цена">45 – 70</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Товар">Заряды усиленные (3 шт.)</td>
+                            <td data-label="Описание">Кевларовая нить, для крупной дичи</td>
+                            <td class="price" data-label="Цена">90 – 130</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Товар">Насадки (комплект 5 шт.)</td>
+                            <td data-label="Описание">Птица, рыба, сигнальная (дым/краска), осветительная, тренировочная
+                            </td>
+                            <td class="price" data-label="Цена">120 – 200</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ========== 4. SURVIVAL & CAMP ========== -->
+        <div class="category" id="survival">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h3>🏕️ ПОХОДНОЕ СНАРЯЖЕНИЕ <span>— USA / Europe surplus</span></h3>
+                <button>▼</button>
+            </div>
+            <div class="category-content">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Товар</th>
+                            <th>Описание</th>
+                            <th>Цена ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Товар">Go-bag (тревожный набор)</td>
+                            <td data-label="Описание">72ч: спички, фонарь, паракорд 10м, термоодеяло</td>
+                            <td class="price" data-label="Цена">75 – 120</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Товар">Палатка Hilleberg (Швеция)</td>
+                            <td data-label="Описание">Экстремальный класс, ручная сборка</td>
+                            <td class="price" data-label="Цена">600 – 1200</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Товар">Рюкзак Lowe Alpine (UK)</td>
+                            <td data-label="Описание">Анатомическая спинка, вентиляция</td>
+                            <td class="price" data-label="Цена">150 – 300</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Товар">Паракорд 30 м</td>
+                            <td data-label="Описание">Нейлон, зеленый/черный/оранжевый</td>
+                            <td class="price" data-label="Цена">15 – 30</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Товар">Фонарь Petzl (Франция)</td>
+                            <td data-label="Описание">Профессиональный налобный</td>
+                            <td class="price" data-label="Цена">50 – 150</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Товар">Сигнальный пистолет + 10 зарядов</td>
+                            <td data-label="Описание">Металлическая ракетница, б/у полицейская</td>
+                            <td class="price" data-label="Цена">165 – 225</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ========== 5. CUSTOM SHOP ========== -->
+        <div class="custom-order">
+            <h3>⚙️ CUSTOM SHOP — ИЗГОТОВЛЕНИЕ ПОД ЗАКАЗ ⚙️</h3>
+            <p><strong>Ножи, мечи, арбалетные болты, кастомизация прикладов</strong> — применяем стали D2, 1095,
+                CPM-S35VN, M390, дамаск.</p>
+            <table style="width:100%; margin-top:15px; border-collapse:collapse;">
+                <tr style="background:#2a3222;">
+                    <th style="padding:8px;">Тип изделия</th>
+                    <th style="padding:8px;">Базовый металл ($)</th>
+                    <th style="padding:8px;">Премиум ($)</th>
+                    <th style="padding:8px;">Экзотика (+)</th>
+                </tr>
+                <tr>
+                    <td style="padding:6px;">Охотничий нож (фикс)</td>
+                    <td class="price">150–250</td>
+                    <td class="price">300–500</td>
+                    <td class="price">+100–300</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px;">Тактический нож</td>
+                    <td class="price">180–300</td>
+                    <td class="price">350–600</td>
+                    <td class="price">+150–400</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px;">Складной нож (флиппер)</td>
+                    <td class="price">250–400</td>
+                    <td class="price">450–800</td>
+                    <td class="price">+200–500</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px;">Меч / тесак (короткий)</td>
+                    <td class="price">400–800</td>
+                    <td class="price">900–2000</td>
+                    <td class="price">+300–1000</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px;">Арбалетные болты (6 шт.)</td>
+                    <td class="price">60–100 (алюм.)</td>
+                    <td class="price">120–200 (карбон)</td>
+                    <td class="price">—</td>
+                </tr>
+            </table>
+            <div class="badge" style="margin-top:15px;">✍️ Сроки и эскизы обсуждаются. Возможна гравировка, в том числе
+                армянские орнаменты.</div>
+        </div>
+
+        <!-- ========== 6. AMMUNITION ========== -->
+        <div class="category" id="ammo">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h3>📦 БОЕПРИПАСЫ <span>— Pistol, Rifle, Shotshell, Reloading</span></h3>
+                <button>▼</button>
+            </div>
+            <div class="category-content">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>Калибр / Тип</th>
+                            <th>Кол-во</th>
+                            <th>Цена ($)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Калибр">.22 LR (Federal/CCI)</td>
+                            <td data-label="Кол-во">50 шт</td>
+                            <td class="price" data-label="Цена">6 – 18</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">9mm Luger FMJ</td>
+                            <td data-label="Кол-во">50 шт</td>
+                            <td class="price" data-label="Цена">15 – 25</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">9mm JHP (Speer Gold Dot)</td>
+                            <td data-label="Кол-во">50 шт</td>
+                            <td class="price" data-label="Цена">25 – 40</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">.45 ACP FMJ</td>
+                            <td data-label="Кол-во">50 шт</td>
+                            <td class="price" data-label="Цена">30 – 45</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">.223 Rem / 5.56 (M193)</td>
+                            <td data-label="Кол-во">20 шт</td>
+                            <td class="price" data-label="Цена">12 – 30</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">.308 Win / 7.62x51 JSP</td>
+                            <td data-label="Кол-во">20 шт</td>
+                            <td class="price" data-label="Цена">20 – 35</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">6.5 Creedmoor Match</td>
+                            <td data-label="Кол-во">20 шт</td>
+                            <td class="price" data-label="Цена">30 – 50</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">7.62x39mm (Barnaul/Tula)</td>
+                            <td data-label="Кол-во">20 шт</td>
+                            <td class="price" data-label="Цена">12 – 20</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">12 кал. дробь (охотничья)</td>
+                            <td data-label="Кол-во">25 шт</td>
+                            <td class="price" data-label="Цена">12 – 20</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Калибр">12 кал. пуля Slug</td>
+                            <td data-label="Кол-во">10 шт</td>
+                            <td class="price" data-label="Цена">15 – 25</td>
+                        </tr>
+                        <tr>
+                            <td class="note" colspan="3">⚡ Релоадинг: порох Hodgdon ($30–50/банка), капсюли
+                                ($50–90/1000шт), пули и гильзы в наличии.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ Вся информация носит ознакомительный характер. Реальная продажа осуществляется только при личной встрече
+            в штате Луизиана с соблюдением федеральных законов США. Arsen Demirjian является частным лицом с инженерным
+            образованием, специализирующимся на кастомизации и коллекционировании.
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p>📧 arsen.demirjian@southgate.edu (для связи по предварительной договоренности)</p>
+            <p>📍 Кампус Southgate, мастерская при факультете Military Engineering</p>
+            <p style="margin-top:10px;">© 2010 Arsenal Demirjian — пародия на интернет-магазин для НРИ. Все цены и
+                характеристики вымышлены, основаны на рыночных данных.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleCategory(headerElement) {
+            const category = headerElement.closest('.category');
+            category.classList.toggle('collapsed');
+            const btn = headerElement.querySelector('button');
+            if (btn) {
+                btn.textContent = category.classList.contains('collapsed') ? '▶' : '▼';
+            }
+        }
+    </script>
+</body>
+
+</html>
