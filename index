@@ -2,6 +2,10 @@
 <html lang="ru">
 
 <head>
+    <meta property="og:title" content="Arsenal Demirjian | Оружейный магазин для НРИ" />
+    <meta property="og:description" content="Кастомное оружие, сеткомёты, ножи, снаряжение — для ваших игр в Луизиане." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vadimshaman.github.io/-/" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsenal Demirjian | Custom Tactical & Survival Gear</title>
